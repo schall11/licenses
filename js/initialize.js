@@ -5,13 +5,14 @@
         Dialog
     ) {
     dojo.require("dojox.storage");
+    var storageProvider=null;
     dojo.addOnLoad(function(){
         dojox.storage.manager.initialize();
         storageProvider=dojox.storage.manager.getProvider();
         storageProvider.initialize();
-        var myObject = storageProvider.get("visitedBool");
+        var myObject = storageProvider.get("visitedBool2345");
         console.log(myObject);
-        if (myObject === false){
+        if (myObject === null){
             myDialog.show();
         }
     });
@@ -20,9 +21,9 @@
     storageProvider=dojox.storage.manager.getProvider();
     storageProvider.initialize();
     var myObject={key1:true};
-    storageProvider.put("visitedBool", myObject, function(status, keyName){
-            // console.log("value put in "+keyName);
+    storageProvider.put("visitedBool2345", myObject, function(status, keyName){
     });
+    console.log(myObject);
     myDialog.hide();
     };
         myDialog = new Dialog({
