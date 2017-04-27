@@ -72,8 +72,11 @@
     }
     </script>
     <script type="text/javascript" src="//js.arcgis.com/3.20/"></script>
+    <script type="text/javascript" src="js/initialize.js"></script>
+
     <script type="text/javascript">
     require([
+
         "config/templateConfig",
         "application/template",
         "application/main"
@@ -96,8 +99,15 @@
             // something went wrong. Let's report it.
             myApp.reportError(error);
         });
+//        myDialog = new Dialog({
+//        title: "",
+//        content: "<p>Click anywhere on the map or enter your address to see the nearest agents.</p><p>Use the slider on the right to change your search radius.</p>",
+//        style: "width: 450px"
+//    });
+//    myDialog.show();
     });
     </script>
+
 </body>
 
 </html>
