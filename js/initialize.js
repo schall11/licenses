@@ -10,7 +10,8 @@
         storageProvider=dojox.storage.manager.getProvider();
         storageProvider.initialize();
         var myObject = storageProvider.get("visitedBool");
-        if (myObject == false){
+        console.log(myObject);
+        if (myObject === false){
             myDialog.show();
         }
     });
