@@ -98,8 +98,8 @@ define([
 
       // results handler
       _resultsHandler : function(results) {
-         this.container.innerHTML = "";
-
+         // this.container.innerHTML = '<div id="disclaimer" style="position: absolute;font-size:14px;margin-top:20px;bottom: 5px;"><b>Before you head to a license agent location, please call to verify the address and hours.</b></div>';
+         this.container.innerHTML = '';
          var proximityFeatures = [];
          var features = results.features;
          if (features.length > 0) {

@@ -601,7 +601,7 @@ a, a:hover, a:visited{
 .pageBody {
 	position: absolute;
 	top: 240px;
-	bottom: 0px;
+	bottom: 65px;
 	width: 100%;
 	display: block;
 	color: #000000;
@@ -988,7 +988,7 @@ a, a:hover, a:visited{
 	.pageBody {
 		position: absolute;
 		top: 110px;
-		bottom: 0px;
+		bottom: 65px;
 		width: 100%;
 		display: block;
 		color: #000000;

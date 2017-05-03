@@ -396,6 +396,7 @@ define([
                     }, pageHeader);
                     domClass.add(pageUnits, 'pageUnits');
 
+
                     var pageSlider = domConstruct.create('div', {
                         innerHTML: "<div id='slider_" + id + "'></div>"
                     }, pageHeader);
@@ -460,6 +461,12 @@ define([
                 }, pageContent);
                 domClass.add(pageBody, 'pageBody');
 
+                 var disclaimer = domConstruct.create('div', {
+                        id: 'disclaimer',
+                        style: 'position: absolute;font-size:14px;margin-top:20px;bottom: 0px; padding:10px 5px 10px 5px; z-index 10; text-align:center; color:white; background-color:#a64e00;height:5%;',
+                        innerHTML: "<b>Before you head to a license agent location, please call to verify the address and hours.</b>"
+                    }, pageContent);
+                    // domClass.add(pageUnits, 'pageUnits');
                 // if (id == this.pages.length-1) {
                 // var pageClear = domConstruct.create('div', {
                 // }, page);
