@@ -752,6 +752,10 @@ define([
                 if (this.curPage != this.prevPage)
                     this.map.infoWindow.hide();
                 var pageObj = this.pages[this.curPage];
+                var hs = registry.byId("slider_" + this.curPage);
+                // if (hs.value === 50){
+                //
+                // }
                 if (pageObj.update && this.location) {
                     pageObj.proximityFeatures = [];
                     if (pageObj.type == "demographics" || pageObj.type == "proximity") {
@@ -841,6 +845,7 @@ define([
             //gsvc.buffer(params, lang.hitch(this, this._processBuffer));
             var wkid = this.location.spatialReference.wkid;
             var bufferGeom;
+            console.log("Location",this.location);
             if (wkid === 4326 || wkid === 3857 || wkid === 102100) {
                 bufferGeom = geometryEngine.geodesicBuffer(this.location, dist, this.config.distanceUnits);
             } else {
