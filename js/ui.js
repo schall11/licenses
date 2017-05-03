@@ -463,8 +463,8 @@ define([
 
                  var disclaimer = domConstruct.create('div', {
                         id: 'disclaimer',
-                        style: 'position: absolute;font-size:14px;margin-top:20px;bottom: 0px; padding:10px 5px 10px 5px; z-index 10; text-align:center; color:white; background-color:#a64e00;height:5%;',
-                        innerHTML: "<b>Before you head to a license agent location, please call to verify the address and hours.</b>"
+                        style: 'position: absolute;font-size:14px;margin-top:20px;bottom: 0px; padding:10px 5px 10px 5px; z-index 10; text-align:center; color:white; background-color:#a64e00;',
+                        innerHTML: "Before you head to a license agent location, please call to verify the address and hours."
                     }, pageContent);
                     // domClass.add(pageUnits, 'pageUnits');
                 // if (id == this.pages.length-1) {
@@ -738,7 +738,12 @@ define([
             this._updatePage();
             var hs = registry.byId("slider_" + this.curPage);
             // console.log(hs.value);
+            if (hs.value != 50){
             dom.byId('units').innerHTML = "Search Distance: "+ hs.value + " " + this.config.distanceUnits;
+            }
+            else {
+                 dom.byId('units').innerHTML = "Showing All Locations";
+            }
         },
 
         // update page
@@ -817,6 +822,9 @@ define([
                 var hs = registry.byId("slider_" + this.curPage);
                 dist = hs.value;
             }
+            if (dist === 50){
+                dist = 500;
+            }
             //dist = dist*1.1;
             // var params = new BufferParameters();
             // params.geometries = [this.location];
@@ -851,7 +859,11 @@ define([
 
             var geom = results[0];
             var ext = geom.getExtent();
-            this.map.setExtent(ext.expand(1.5));
+            var hs = registry.byId("slider_" + this.curPage);
+            if (hs.value != 50){
+                this.map.setExtent(ext.expand(1.5));
+            }
+
         },
 
         // peform analysis
@@ -932,7 +944,8 @@ define([
                 this.lyrWeather.setVisibility(pageObj.type == "weather");
 
             // buffer
-            if (pageObj.buffer) {
+            var hs = registry.byId("slider_" + this.curPage);
+            if (pageObj.buffer && hs.value != 50) {
                 var symLine = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255, 255, 255, 0.15]), 1);
                 var symBuffer = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, symLine, new Color([0, 0, 0, 0.15]));
                 var graBuffer = new Graphic(pageObj.buffer, symBuffer, {});
