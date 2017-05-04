@@ -7,11 +7,14 @@ html, body {
 }
 
 a, a:hover, a:visited{
-	color: #bbbbbb;
+	color: #a64e00;
 	text-decoration: none;
 }
 
-
+a[href^="tel:"] {
+  color: #a64e00;
+  text-decoration: none;
+}
 /* Fonts */
 
 @font-face {

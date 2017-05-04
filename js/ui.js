@@ -852,7 +852,7 @@ define([
             //gsvc.buffer(params, lang.hitch(this, this._processBuffer));
             var wkid = this.location.spatialReference.wkid;
             var bufferGeom;
-            console.log("Location",this.location);
+            // console.log("Location",this.location);
             if (wkid === 4326 || wkid === 3857 || wkid === 102100) {
                 bufferGeom = geometryEngine.geodesicBuffer(this.location, dist, this.config.distanceUnits);
             } else {

@@ -102,6 +102,8 @@ define([
          this.container.innerHTML = '';
          var proximityFeatures = [];
          var features = results.features;
+         // console.log("PageObj",this.pageObj);
+
          if (features.length > 0) {
 
             // process features
@@ -113,11 +115,22 @@ define([
                   pt = this._getPointForGeometry(geom);
                var dist = this._getDistance(pt);
                gra.attributes.DISTANCE = dist;
+               var pn = "1-" + gra.attributes.DAYPHONE.substring(0,3) + "-" + gra.attributes.DAYPHONE.substring(3,6) + "-" + gra.attributes.DAYPHONE.substring(6,10);
+               gra.attributes.DAYPHONE = '<a href="tel:' + pn + '">' + pn + '</a>';
+               gra.attributes.dirURL = '<a href="'+ 'https://www.google.com/maps?daddr='+gra.attributes.Y +',' + gra.attributes.X + '"> Click Here </a>';
                gra.attributes.POINT_LOCATION = pt;
                gra.setInfoTemplate(this.pageObj.layer.infoTemplate);
                proximityFeatures.push(gra);
             }
+            var dirObj = {
+                  fieldName: "dirURL",
+                   label: "Directions",
+                   stringFieldOption: "textbox",
+                   tooltip: "",
+                   visible: "true"
+               };
 
+               this.pageObj.layer.infoTemplate.info.fieldInfos.push(dirObj);
             // sort by distance
             proximityFeatures.sort(this._compareDistance);
             this.pageObj.proximityFeatures = proximityFeatures.slice();
@@ -303,6 +316,10 @@ define([
                cp.placeAt('recDetails', 'last');
                cp.startup();
                var content = gra.getContent();
+               // console.log("gra",gra);
+               // console.log(content);
+               // gra.attributes.dirURL = '<a href="'+ 'https://www.google.com/maps?daddr='+gra.attributes.Y +',' + gra.attributes.X + '"> Click Here </a>';
+
                registry.byId("recPane").set("content", content);
                if (!zoom) {
                   setTimeout(lang.hitch(this, this._updatePosition), 300);
