@@ -431,6 +431,13 @@ define([
                 on(pageClose, 'click', lang.hitch(this, this._closePage));
                 domClass.add(pageClose, 'pageClose');
 
+                // pageHelp
+                 var help = domConstruct.create('div', {
+                    title: "Help",
+                    id: "helpBtn23"
+                }, 'btnHelp','first');
+                // on(help, 'click', myDialog.show());
+                domClass.add(help, 'helpIcon2');
                 // page up
                 tip = "Previous";
                 if (this.config && this.config.i18n) {

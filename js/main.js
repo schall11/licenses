@@ -16,6 +16,7 @@
  | limitations under the License.
  */
 define([
+    "dijit/form/Button",
     "dojo/ready",
     "dojo/_base/array",
     "dojo/_base/Color",
@@ -36,6 +37,7 @@ define([
     "esri/urlUtils",
     "application/SearchSources"
 ], function(
+    Button,
     ready,
     array,
     Color,
@@ -280,6 +282,7 @@ define([
             }, "btnLocate");
             on(geoLocate, "locate", lang.hitch(this, this._geoLocated));
             geoLocate.startup();
+
 
             // geocoder
             // var geocoderOptions = this._createGeocoderOptions();

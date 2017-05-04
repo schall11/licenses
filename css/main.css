@@ -46,6 +46,33 @@ a, a:hover, a:visited{
 	height: 100%;
 }
 
+.helpIcon2 {
+	/*position: absolute;*/
+	/*right: 10px;*/
+	/*top: 10px;*/
+	background-image: url('../images/help.png');
+	/*background-size: cover;*/
+	background-color:transparent;
+	background-repeat:no-repeat;
+	background-position: center center;
+	display: block;
+	height:30px;
+	width:30px;
+	background-size: 20px 20px;
+	border-radius:15px;
+	cursor:pointer;
+	user-select:none;
+	-webkit-user-select: none;
+	    -moz-user-select: none;
+	    -ms-user-select: none;
+	    -webkit-border-radius: 15px;
+	    -moz-border-radius: 15px;
+	    -o-border-radius: 15px;
+}
+.helpIcon2:hover{
+	/*opacity: 0.7;*/
+	background-color: #666;
+}
 .esriRTL label {
 	/*Example of a rule that will be applied if the app is viewed in a browser with a RTL locale like Hebrew or Arabic.*/
 }
