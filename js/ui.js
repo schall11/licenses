@@ -257,6 +257,7 @@ define([
                         defExp: defExp
                     });
                 }
+
             }));
 
             // demographics

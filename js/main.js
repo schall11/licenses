@@ -191,6 +191,7 @@ define([
             // create webmap from item
             mapOptions.infoWindow = popup;
 
+
             arcgisUtils.createMap(itemInfo, "mapDiv", {
                 mapOptions: mapOptions,
                 usePopupManager: true,
@@ -216,6 +217,7 @@ define([
                     }));
                 }
             }), this.reportError);
+            console.log("map", this);
         },
 
         // Map Loaded - Map is ready
