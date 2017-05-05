@@ -123,7 +123,7 @@ define([
                gra.setInfoTemplate(this.pageObj.layer.infoTemplate);
                proximityFeatures.push(gra);
             }
-            
+
             // sort by distance
             proximityFeatures.sort(this._compareDistance);
             this.pageObj.proximityFeatures = proximityFeatures.slice();

@@ -393,7 +393,8 @@ define([
 
                     var pageUnits = domConstruct.create('div', {
                         id: 'units',
-                        innerHTML: "Search Distance: "+ this.config.defaultDistance + " " + this.config.distanceUnits
+                        // innerHTML: "Search Distance: "+ this.config.defaultDistance + " " + this.config.distanceUnits
+                        innerHTML: "Showing All Locations"
                     }, pageHeader);
                     domClass.add(pageUnits, 'pageUnits');
 
@@ -746,7 +747,7 @@ define([
             this._updatePage();
             var hs = registry.byId("slider_" + this.curPage);
             // console.log(hs.value);
-            if (hs.value != 50){
+            if (hs.value != this.config.maxDistance){
             dom.byId('units').innerHTML = "Search Distance: "+ hs.value + " " + this.config.distanceUnits;
             }
             else {
@@ -834,7 +835,7 @@ define([
                 var hs = registry.byId("slider_" + this.curPage);
                 dist = hs.value;
             }
-            if (dist === 50){
+            if (dist === this.config.maxDistance){
                 dist = 500;
             }
             //dist = dist*1.1;
@@ -873,7 +874,7 @@ define([
             var geom = results[0];
             var ext = geom.getExtent();
             var hs = registry.byId("slider_" + this.curPage);
-            if (hs.value != 50){
+            if (hs.value != this.config.maxDistance){
                 this.map.setExtent(ext.expand(1.5));
             }
 
@@ -958,7 +959,7 @@ define([
 
             // buffer
             var hs = registry.byId("slider_" + this.curPage);
-            if (pageObj.buffer && hs.value != 50) {
+            if (pageObj.buffer && hs.value != this.config.maxDistance) {
                 var symLine = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255, 255, 255, 0.15]), 1);
                 var symBuffer = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, symLine, new Color([0, 0, 0, 0.15]));
                 var graBuffer = new Graphic(pageObj.buffer, symBuffer, {});

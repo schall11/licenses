@@ -217,7 +217,7 @@ define([
                     }));
                 }
             }), this.reportError);
-            console.log("map", this);
+            // console.log("map", this);
         },
 
         // Map Loaded - Map is ready
@@ -225,6 +225,8 @@ define([
             query(".esriSimpleSlider").style("backgroundColor", this.config.color.toString());
             // remove loading class from body
             domClass.remove(document.body, "app-loading");
+            // this.map.emit('click', {mapPoint: new esri.geometry.Point(-111.8910,40.7608, esri.SpatialReference({wkid:102100}))});
+            // console.log('asdasd');
         },
 
         // Create Geocoder Options
@@ -278,13 +280,21 @@ define([
 
             // geolocate
             var geoLocate = new LocateButton({
+                setScale: true,
                 map: this.map,
                 autoNavigate: false,
                 highlightLocation: false
             }, "btnLocate");
-            on(geoLocate, "locate", lang.hitch(this, this._geoLocated));
+            on(geoLocate, "locate", lang.hitch(this, this._geoLocated));  /// removed due to strange behavior with zoom levels
             geoLocate.startup();
-
+            var cancelBtn = dom.byId("cancel");
+            var introDialog = dom.byId("introDialog");
+            console.log(cancelBtn);
+            on(cancelBtn,"click", function() {
+                geoLocate.locate();
+                dijit.byId("introDialog").hide();
+                // dojo.style(dojo.byId('introDialog'), "display", "none");
+            });
 
             // geocoder
             // var geocoderOptions = this._createGeocoderOptions();
@@ -319,6 +329,8 @@ define([
             // update theme
             this._updateTheme();
 
+
+
             // set default location
             if (this.config.defaultToCenter)
                 this._setDefaultLocation();
@@ -352,6 +364,8 @@ define([
         // map click handler
         _mapClickHandler: function(event) {
             this.ui.setLocation(event.mapPoint);
+            console.log("MapPt",event.mapPoint);
+
         },
 
         // Create UI

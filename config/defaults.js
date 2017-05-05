@@ -73,7 +73,7 @@ define({
     "directionsURL": null,
     "distanceUnits": "miles", // options: miles or kilometers
     "maxDistance": 50,
-    "defaultDistance": 5,
+    "defaultDistance": 50,
     "defaultZoomLevel": 13,
     "defaultToCenter": false,
     // **************************** //
