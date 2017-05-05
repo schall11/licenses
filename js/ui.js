@@ -601,18 +601,18 @@ define([
 
         // show previous page
         _showPreviousPage: function(num) {
-            this.prevPage = null;
-            if (num == 1)
-                this.prevPage = this.curPage;
-            var newnum = num - 1;
-            this._scrollToPage(newnum);
+            // this.prevPage = null;
+            // if (num == 1)
+            //     this.prevPage = this.curPage;
+            // var newnum = num - 1;
+            // this._scrollToPage(newnum);
         },
 
         // show next page
         _showNextPage: function(num) {
-            this.prevPage = null;
-            var newnum = num + 1;
-            this._scrollToPage(newnum);
+            // this.prevPage = null;
+            // var newnum = num + 1;
+            // this._scrollToPage(newnum);
         },
 
         // close page
