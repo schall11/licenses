@@ -462,6 +462,7 @@ a[href^="tel:"] {
 
 #panelContent {
 	position: absolute;
+	z-index: 10;
 	right: 0px;
 	top: 0px;
 	width: 320px;
@@ -812,6 +813,7 @@ a[href^="tel:"] {
 
 #panelTop {
 	position: fixed;
+	z-index: 9;
 	left: 30px;
 	top: 5px;
 	color: #ffffff;
