@@ -281,15 +281,17 @@ define([
             // geolocate
             var geoLocate = new LocateButton({
                 setScale: true,
+                scale: 200000,
                 map: this.map,
                 autoNavigate: false,
                 highlightLocation: false
             }, "btnLocate");
             on(geoLocate, "locate", lang.hitch(this, this._geoLocated));  /// removed due to strange behavior with zoom levels
             geoLocate.startup();
+
+
             var cancelBtn = dom.byId("cancel");
             var introDialog = dom.byId("introDialog");
-            console.log(cancelBtn);
             on(cancelBtn,"click", function() {
                 geoLocate.locate();
                 dijit.byId("introDialog").hide();

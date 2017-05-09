@@ -208,6 +208,7 @@ a[href^="tel:"] {
 	line-height: 28px;
 	border: 1px solid rgba(255,255,255, 0.5);
 	border-radius: 4px;
+	/*max-width: 175px;*/
 }
 
 .arcgisSearch .searchBtn{
@@ -917,7 +918,7 @@ a[href^="tel:"] {
 		/*overflow-x: hidden;*/
 	}
 	#panelMenu{
-		display:block;
+		display:block !important;
 	}
 
 	.esriSimpleSlider {
@@ -943,7 +944,7 @@ a[href^="tel:"] {
 		top: 0px;
 		width: 100%;
 		height: 100%;
-		/*display: none !important;*/
+		display: none;
 	}
 	
 	#panelDirections {
@@ -1034,7 +1035,9 @@ a[href^="tel:"] {
 		overflow-x: hidden;
 		overflow-y: scroll;
 	}
-	
+	.arcgisSearch .searchGroup .searchInput {
+	width: 100px !important;
+}
 }
 	
 

@@ -53,7 +53,8 @@ define([
     "application/DemographicsInfo",
     "application/LifestyleInfo",
     "application/WeatherInfo",
-    "application/ProximityInfo"
+    "application/ProximityInfo",
+    "dojo/window"
 ], function(
     Evented,
     array,
@@ -92,7 +93,8 @@ define([
     DemographicsInfo,
     LifestyleInfo,
     WeatherInfo,
-    ProximityInfo
+    ProximityInfo,
+    win
 ) {
     return declare([Evented], {
 
@@ -159,8 +161,26 @@ define([
             }
             menu.title = tip;
             domStyle.set(menu, "background-color", this.pages[0].color);
-            on(menu, "click", lang.hitch(this, this._showCurrentPage));
-            lang.hitch(this, this._showPage(1));
+            // on(menu, "click", lang.hitch(this, this._showCurrentPage));
+
+            var myVar = dom.byId("panelContent");
+            on(menu, "click", function(evt){
+                console.log("CLICKED HOORAY");
+                console.log(myVar);
+            domStyle.set(myVar, "display", "block");
+            console.log(myVar);
+
+            });
+            /// sam
+            var vs =win.getBox();
+
+            console.log('viewport size:', ' width: ', vs.w, ', height: ', vs.h, ', left: ', vs.l, ', top: ', vs.t);
+            if (vs.width <= 500) {
+                lang.hitch(this, this._showPage(1));
+            }
+            else {
+                lang.hitch(this,this._showPage(0));
+            }
             // menu.fireEvent("onclick");
             // create pages
             for (var i = 0; i < this.pages.length; i++) {
@@ -430,8 +450,16 @@ define([
                 var pageClose = domConstruct.create('div', {
                     title: tip
                 }, pageHeader);
-                on(pageClose, 'click', lang.hitch(this, this._closePage));
+
+                // on(pageClose, 'click', lang.hitch(this, this._closePage));
                 domClass.add(pageClose, 'pageClose');
+
+                var myVar2 = dom.byId("panelContent");
+            on(pageClose, "click", function(evt){
+            domStyle.set(myVar2, "display", "none");
+            });
+
+
 
                 // pageHelp
                  var help = domConstruct.create('div', {
@@ -586,16 +614,16 @@ define([
         _showCurrentPage: function() {
             var num = 1;
             domStyle.set("panelMenu", "display", "none");
-            domStyle.set("panelContent", "display", "block");
+            // domStyle.set("panelContent", "display", "block");
             if (this.prevPage)
                 num = this.prevPage;
-            this._showPage(num);
+            this._showPage(1);
         },
 
         // show page
         _showPage: function(num) {
             if (num > 0)
-                domStyle.set("panelContent", "display", "block");
+                // domStyle.set("panelContent", "display", "block");
             this._scrollToPage(num);
         },
 
@@ -757,6 +785,7 @@ define([
 
         // update page
         _updatePage: function() {
+            console.log(this.prevPage,this.curPage);
             if (!this.prevPage || this.curPage > 0) {
                 if (this.curPage != this.prevPage)
                     this.map.infoWindow.hide();
@@ -765,7 +794,9 @@ define([
                 // if (hs.value === 50){
                 //
                 // }
+                console.log(pageObj);
                 if (pageObj.update && this.location) {
+                    console.log('update');
                     pageObj.proximityFeatures = [];
                     if (pageObj.type == "demographics" || pageObj.type == "proximity") {
                         this._bufferLocation(pageObj);
@@ -773,19 +804,21 @@ define([
                         this._performAnalysis(pageObj);
                     }
                 } else {
+                    console.log('skip update');
                     this._renderResults(pageObj);
                     if (pageObj.type == "proximity")
                         pageObj.proximityInfo.updateSelection();
                 }
             }
-            if (this.curPage === 0) {
+            /// sam
+            if (this.curPage === 0 && this.map.width<= 500) {
                 domStyle.set("panelTop", "display", "block");
                 domStyle.set("panelMenu", "display", "block");
                 domStyle.set("panelContent", "display", "none");
             } else {
                 domStyle.set("panelTop", "display", "block");
                 domStyle.set("panelMenu", "display", "none");
-                domStyle.set("panelContent", "display", "block");
+                // domStyle.set("panelContent", "display", "block");
                 if (this.map.width <= 500) {
                     domStyle.set("panelTop", "display", "none");
                 }
@@ -923,7 +956,8 @@ define([
                     if (this.curPage === 0 && this.prevPage) {
                         pageObj = this.pages[this.prevPage];
                         pageObj.proximityInfo.selectFeature(gra);
-                        this._showPage(this.prevPage);
+                        //sam12
+                        this._showPage(1);
                     } else {
                         pageObj = this.pages[this.curPage];
                         pageObj.proximityInfo.selectFeature(gra);
@@ -1049,7 +1083,7 @@ define([
                 this.snap = true;
                 this.dirWidget.reset();
                 domStyle.set("panelDirections", "display", "none");
-                domStyle.set("panelContent", "display", "block");
+                // domStyle.set("panelContent", "display", "block");
                 this._showPage(this.curPage);
             } else {
                 var color = this._getPageColor(this.curPage);

@@ -1,5 +1,6 @@
-define(["dojo/_base/declare", "dojo/_base/lang", "dojo/_base/array", "dojo/_base/json", "dojo/dom-construct", "esri/lang", "esri/tasks/locator", "esri/layers/FeatureLayer", "esri/dijit/Search"], function (
-declare, lang, array, dojoJson, domConstruct, esriLang, Locator, FeatureLayer, Search) {
+define(["dojo/_base/declare", "dojo/_base/lang", "dojo/_base/array", "dojo/_base/json", "dojo/dom-construct", "esri/lang", "esri/tasks/locator", "esri/layers/FeatureLayer", "esri/dijit/Search", "dojo/i18n!esri/nls/jsapi"], function (
+declare, lang, array, dojoJson, domConstruct, esriLang, Locator, FeatureLayer, Search, esriBundle) {
+     esriBundle.widgets.Search.main.placeholder = "Find Address";
     return declare(null, {
 
         constructor: function (parameters) {
@@ -51,6 +52,8 @@ declare, lang, array, dojoJson, domConstruct, esriLang, Locator, FeatureLayer, S
             }
 
             return this.sources;
+            console.log("sources",this.sources);
+                    // this.sources.locator.placeholder = "Search Geocoder";
         },
 
         _getActiveSource: function () {
@@ -134,6 +137,8 @@ declare, lang, array, dojoJson, domConstruct, esriLang, Locator, FeatureLayer, S
                         source.outFields = ["*"];
                         source.placeholder = searchOptions.hintText;
                         this.sources.push(source);
+
+
                     }
                 }));
             }
@@ -144,6 +149,7 @@ declare, lang, array, dojoJson, domConstruct, esriLang, Locator, FeatureLayer, S
             array.forEach(configSource, lang.hitch(this, function (source) {
                 if (source.locator) {
                     source.locator = new Locator(source.url);
+
                 } else { //feature layer
                     var featureLayer = null;
                     if (source.flayerId) {
@@ -159,6 +165,7 @@ declare, lang, array, dojoJson, domConstruct, esriLang, Locator, FeatureLayer, S
                 if (source.searchWithinMap) {
                     source.searchExtent = this.map.extent;
                 }
+
                 this.sources.push(source);
             }));
 
@@ -176,6 +183,7 @@ declare, lang, array, dojoJson, domConstruct, esriLang, Locator, FeatureLayer, S
                         source.outFields = ["*"];
                         this.sources.push(source);
                     }
+
                 }
             }));
         }
