@@ -165,10 +165,7 @@ define([
 
             var myVar = dom.byId("panelContent");
             on(menu, "click", function(evt){
-                console.log("CLICKED HOORAY");
-                console.log(myVar);
-            domStyle.set(myVar, "display", "block");
-            console.log(myVar);
+                domStyle.set(myVar, "display", "block");
 
             });
             /// sam
@@ -951,9 +948,12 @@ define([
             var gra = evt.graphic;
             dojoEvent.stop(evt);
             var id = gra.id;
+            var myVar = dom.byId("panelContent");
+            domStyle.set(myVar, "display", "block");
             if ((gra.id != "buffer") && (gra.id != "location")) {
                 if (id.indexOf("R_") > -1 || id.indexOf("T_") > -1) {
-                    if (this.curPage === 0 && this.prevPage) {
+                    if (this.curPage === 0) {
+                        console.log("Opening page 1");
                         pageObj = this.pages[this.prevPage];
                         pageObj.proximityInfo.selectFeature(gra);
                         //sam12
