@@ -172,11 +172,13 @@ define([
             var vs =win.getBox();
 
             console.log('viewport size:', ' width: ', vs.w, ', height: ', vs.h, ', left: ', vs.l, ', top: ', vs.t);
-            if (vs.width <= 500) {
-                lang.hitch(this, this._showPage(1));
+
+            if (vs.w <= 800) {
+                domStyle.set(myVar, "display", "none");
+                domStyle.set("panelMenu", "display", "block");
             }
             else {
-                lang.hitch(this,this._showPage(0));
+                domStyle.set(myVar, "display", "block");
             }
             // menu.fireEvent("onclick");
             // create pages
@@ -808,17 +810,19 @@ define([
                 }
             }
             /// sam
-            if (this.curPage === 0 && this.map.width<= 500) {
+            if (this.map.width<= 800) {
+                console.log("1");
                 domStyle.set("panelTop", "display", "block");
                 domStyle.set("panelMenu", "display", "block");
                 domStyle.set("panelContent", "display", "none");
             } else {
+                console.log("2");
                 domStyle.set("panelTop", "display", "block");
                 domStyle.set("panelMenu", "display", "none");
                 // domStyle.set("panelContent", "display", "block");
-                if (this.map.width <= 500) {
-                    domStyle.set("panelTop", "display", "none");
-                }
+                // if (this.map.width <= 500) {
+                //     domStyle.set("panelTop", "display", "none");
+                // }
             }
 
         },
@@ -952,6 +956,7 @@ define([
 
             if ((gra.id != "buffer") && (gra.id != "location")) {
                 if (id.indexOf("R_") > -1 || id.indexOf("T_") > -1) {
+                    domStyle.set(contentVar, "display", "block");
                     if (this.curPage === 0) {
                         // console.log("Opening page 1");
                         pageObj = this.pages[this.prevPage];
