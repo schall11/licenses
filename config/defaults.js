@@ -46,7 +46,7 @@ define({
     "color": "#a64e00",
     "colors": ["#a64e00", "#a64e00", "#886197", "#8a2581", "#fc0055", "#c50143", "#db0111", "#ec5b02", "#efa602", "#dab900", "#80ab00", "#548901", "#049686", "#097096"],
     "logo" : "//wildlife.utah.gov/pelican_webmap/images/DWR_logo_small.png",
-    "title": "Utah Division of Wildlife Resources License Locator",
+    "title": "Utah DWR License Agent Locator",
     // **************************** //
     
     // **************************** //

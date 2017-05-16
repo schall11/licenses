@@ -948,15 +948,14 @@ define([
             var gra = evt.graphic;
             dojoEvent.stop(evt);
             var id = gra.id;
-            var myVar = dom.byId("panelContent");
-            domStyle.set(myVar, "display", "block");
+            var contentVar = dom.byId("panelContent");
+
             if ((gra.id != "buffer") && (gra.id != "location")) {
                 if (id.indexOf("R_") > -1 || id.indexOf("T_") > -1) {
                     if (this.curPage === 0) {
-                        console.log("Opening page 1");
+                        // console.log("Opening page 1");
                         pageObj = this.pages[this.prevPage];
                         pageObj.proximityInfo.selectFeature(gra);
-                        //sam12
                         this._showPage(1);
                     } else {
                         pageObj = this.pages[this.curPage];

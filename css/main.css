@@ -500,6 +500,7 @@ a[href^="tel:"] {
 	overflow: hidden;
 	display: block;
 	background-color: #ffffff;
+	z-index: 1;
 }
 
 .pageHeader {
