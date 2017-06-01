@@ -50,9 +50,9 @@ define([
     "esri/tasks/BufferParameters",
     "esri/tasks/GeometryService",
     "esri/urlUtils",
-    "application/DemographicsInfo",
-    "application/LifestyleInfo",
-    "application/WeatherInfo",
+    // "application/DemographicsInfo",
+    // "application/LifestyleInfo",
+    // "application/WeatherInfo",
     "application/ProximityInfo",
     "dojo/window"
 ], function(
@@ -90,9 +90,9 @@ define([
     BufferParameters,
     GeometryService,
     urlUtils,
-    DemographicsInfo,
-    LifestyleInfo,
-    WeatherInfo,
+    // DemographicsInfo,
+    // LifestyleInfo,
+    // WeatherInfo,
     ProximityInfo,
     win
 ) {
@@ -472,11 +472,11 @@ define([
                 if (this.config && this.config.i18n) {
                     tip = this.config.i18n.tooltips.previous;
                 }
-                var pageUp = domConstruct.create('div', {
-                    title: tip
-                }, pageHeader);
-                on(pageUp, 'click', lang.hitch(this, this._showPreviousPage, id));
-                domClass.add(pageUp, 'pageUp');
+                // var pageUp = domConstruct.create('div', {
+                //     title: tip
+                // }, pageHeader);
+                // on(pageUp, 'click', lang.hitch(this, this._showPreviousPage, id));
+                // domClass.add(pageUp, 'pageUp');
 
                 // page down
                 if (id < this.pages.length - 1) {

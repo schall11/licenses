@@ -36,7 +36,7 @@
         myDialog = new Dialog({
             id: "introDialog",
         title: "",
-        content: '<p>Click anywhere on the map or enter your address to see the nearest agents.</p><p>Use the slider on the right to change your search radius.</p><div class="dijitDialogPaneActionBar"><button data-dojo-type="dijit/form/Button" type="button"  id="cancel">OK</button> </div>',
+        content: '<p>Click anywhere on the map or enter your address to see the nearest license agents.</p><p>Use the slider on the results menu to change your search radius.</p><div class="dijitDialogPaneActionBar"><button data-dojo-type="dijit/form/Button" type="button"  id="cancel">OK</button> </div>',
         style: "width: 450px"
     });
         myDialog.show();
